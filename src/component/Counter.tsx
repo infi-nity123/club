@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 export default function Counter() {
+  // Initializing state from localStorage
+  // Mayowa when you refresh the page, the count value is
+  //  reset to 0 because you set it directly to zero.
+  //  To persist the count value across page reloads,
+  //  you need to pass a function to the get the initial state from localStorage.
+  // Not like this: const [count, setCount] = useState(0);
+  // but this
   const [count, setCount] = useState<number>(() => {
     const saved = localStorage.getItem("count");
     return saved ? JSON.parse(saved) : 0;
   });
+  // Syncing state to localStorage
   useEffect(() => {
     localStorage.setItem("count", JSON.stringify(count));
   }, [count]);
