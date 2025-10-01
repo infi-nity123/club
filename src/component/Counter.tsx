@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 export default function Counter() {
-  const [count, setCount] = useState(() => {
+  const [count, setCount] = useState<number>(() => {
     const saved = localStorage.getItem("count");
     return saved ? JSON.parse(saved) : 0;
   });
